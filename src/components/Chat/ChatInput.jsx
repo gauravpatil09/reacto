@@ -1,24 +1,23 @@
-import { useState } from "react";
+import { useTheme } from "../context/ThemeContext";
 
 export default function ChatInput() {
-  const [text, setText] = useState("");
-
-  const send = () => {
-    if (!text.trim()) return;
-    setText("");
-  };
+  const { theme } = useTheme();
 
   return (
-    <div className="border-t border-[#565869] p-4">
-      <div className="max-w-3xl mx-auto flex items-center bg-[#40414f] rounded-xl px-4">
+    <div className={`p-4 ${theme.chatBg}`}>
+      <div className={`flex items-center rounded-full px-4 py-2 ${theme.inputBg}`}>
         <input
-          className="flex-1 bg-transparent py-3 outline-none text-[#ececf1]"
-          placeholder="Send a message..."
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-          onKeyDown={(e) => e.key === "Enter" && send()}
+          type="text"
+          placeholder={
+            theme.name === "chatgpt"
+              ? "Send a message..."
+              : "Ask Gemini..."
+          }
+          className="flex-1 bg-transparent outline-none"
         />
-        <button className="text-gray-300 hover:text-white">➤</button>
+        <button className={`ml-3 px-4 py-1 rounded-full text-white ${theme.buttonBg}`}>
+          Send
+        </button>
       </div>
     </div>
   );

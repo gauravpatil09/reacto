@@ -1,14 +1,10 @@
 import { createContext, useContext, useState } from "react";
-// import { chatgptTheme } from "../assets/themes/chatgpt.theme.js";
-// import { geminiTheme } from "../assets/themes/gemini.theme.js";
 
-import { chatgptTheme } from "../../assets/themes/chatgpt.theme.js";
-import { geminiTheme } from "../../assets/themes/gemini.theme.js";
-
-
+import chatgptTheme from "../../assets/themes/chatgpt.theme";
+import geminiTheme from "../../assets/themes/gemini.theme";
 const ThemeContext = createContext();
 
-export function ThemeProvider({ children }) {
+export const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState(chatgptTheme);
 
   const toggleTheme = () => {
@@ -22,6 +18,6 @@ export function ThemeProvider({ children }) {
       {children}
     </ThemeContext.Provider>
   );
-}
+};
 
 export const useTheme = () => useContext(ThemeContext);

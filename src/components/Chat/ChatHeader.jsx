@@ -1,7 +1,13 @@
+import { useTheme } from "../context/ThemeContext";
+
 export default function ChatHeader() {
+  const { theme } = useTheme();
+
   return (
-    <div className="h-14 border-b border-[#565869] flex items-center px-4 text-sm">
-      ChatGPT
+    <div className={`p-4 border-b ${theme.headerBg} ${theme.textColor}`}>
+      <h1 className="text-lg font-medium">
+        {theme.name === "chatgpt" ? "ChatGPT" : "Gemini"}
+      </h1>
     </div>
   );
 }

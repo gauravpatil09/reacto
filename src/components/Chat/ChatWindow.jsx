@@ -1,32 +1,25 @@
-import { useEffect, useRef, useState } from "react";
+import { useTheme } from "../context/ThemeContext";
 
 export default function ChatWindow() {
-  const [messages, setMessages] = useState([
-    { role: "bot", text: "How can I help you today?" }
-  ]);
-
-  const bottomRef = useRef(null);
-
-  useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages]);
+  const { theme } = useTheme();
 
   return (
-    <div className="flex-1 overflow-y-auto px-4 py-6 space-y-6">
-      {messages.map((m, i) => (
-        <div key={i} className="flex">
-          <div
-            className={`max-w-3xl px-4 py-3 rounded-lg ${
-              m.role === "bot"
-                ? "bg-[#444654]"
-                : "bg-[#343541] border border-[#565869] ml-auto"
-            }`}
-          >
-            {m.text}
-          </div>
+    <div className={`flex-1 overflow-y-auto p-6 ${theme.chatBg}`}>
+      
+      {/* Bot Message */}
+      <div className="mb-4">
+        <div className="max-w-xl p-4 rounded-lg bg-gray-500/10">
+          Hello 👋 This UI changes between ChatGPT & Gemini theme.
         </div>
-      ))}
-      <div ref={bottomRef} />
+      </div>
+
+      {/* User Message */}
+      <div className="flex justify-end">
+        <div className="max-w-xl p-4 rounded-lg bg-blue-500 text-white">
+          Nice!
+        </div>
+      </div>
+
     </div>
   );
 }

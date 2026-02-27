@@ -1,20 +1,17 @@
-export default function Sidebar() {
+import { useTheme } from "../context/ThemeContext";
+
+export default function SideBar() {
+  const { theme } = useTheme();
+
   return (
-    <aside className="w-64 bg-[#202123] p-3 text-sm">
-      <button className="w-full border border-[#565869] rounded-lg p-2 mb-4 hover:bg-[#2a2b32]">
-        + New chat
+    <div className={`w-64 p-4 ${theme.sidebarBg} ${theme.textColor}`}>
+      <h2 className="text-lg font-semibold mb-6">
+        {theme.name === "chatgpt" ? "ChatGPT" : "Gemini"}
+      </h2>
+
+      <button className="w-full text-left py-2 px-3 rounded hover:bg-gray-500/20">
+        + New Chat
       </button>
-
-      <div className="text-gray-400 mb-2">Today</div>
-
-      <div className="space-y-1">
-        <div className="p-2 rounded hover:bg-[#2a2b32] cursor-pointer">
-          MERN Chat App
-        </div>
-        <div className="p-2 rounded hover:bg-[#2a2b32] cursor-pointer">
-          UI Clone
-        </div>
-      </div>
-    </aside>
+    </div>
   );
 }

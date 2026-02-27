@@ -1,13 +1,13 @@
-export const geminiTheme = {
+const geminiTheme = {
   name: "gemini",
-
-  appBg: "#0f172a",
-  headerBg: "#020617",
-  inputBg: "#020617",
-
-  userMsgBg: "#7c3aed",
-  botMsgBg: "#1e293b",
-
-  text: "#ffffff",
-  bubble: true,
+  mainBg: "bg-white",
+  sidebarBg: "bg-[#f8f9fa]",
+  chatBg: "bg-white",
+  headerBg: "bg-white",
+  inputBg: "bg-[#f1f3f4]",
+  textColor: "text-gray-900",
+  subText: "text-gray-500",
+  buttonBg: "bg-blue-600 hover:bg-blue-700",
 };
+
+export default geminiTheme;
